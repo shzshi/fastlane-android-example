@@ -10,15 +10,15 @@ platform :android do
     
     gradle(task: "assemble")
     
-    sign_apk(
-      keystore_path: "${HOME}/keyvault/android.jks",
-      alias: "android-fastlane-example",
-      storepass: options[:storepass],
-      tsa: "http://timestamp.comodoca.com/rfc316",
-    )
+#    sign_apk(
+#      keystore_path: "${HOME}/keyvault/android.jks",
+#      alias: "android-fastlane-example",
+#      storepass: options[:storepass],
+#      tsa: "http://timestamp.comodoca.com/rfc316",
+#    )
 
     
-    zipalign(apk_path: "#{lane_context[SharedValues::SIGNED_APK_PATH]}")
+#    zipalign(apk_path: "#{lane_context[SharedValues::SIGNED_APK_PATH]}")
     gradle(task: "test")
   
   #supply(
