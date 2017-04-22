@@ -18,19 +18,19 @@ node {
 	}
 	
 	stage ('Assemble') {
-		sh 'fastlane android assemble'
+		sh 'cd sample/fastlane/; fastlane android assemble'
 	}
 	
 	stage ('Lint') {
-		sh 'fastlane android lint'
+		sh 'cd sample/fastlane/; fastlane android lint'
 	}
 	
 	stage ('Test') {
-		sh 'fastlane android test'
+		sh 'cd sample/fastlane/; fastlane android test'
 	}
 	
 	stage ('Crashlytics') {
-		sh 'fastlane android publish'
+		sh 'cd sample/fastlane/; fastlane android publish'
 		
 	}
 }
