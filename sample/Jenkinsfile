@@ -23,6 +23,7 @@ node {
 	
 	stage ('Lint') {
 		sh 'cd sample/fastlane/; fastlane android static_analysis'
+		androidLint canComputeNew: false, defaultEncoding: '', healthy: '', pattern: 'file:///home/ec2-user/.jenkins/workspace/DevOps%20Practise/Android/Android_Example_1.4/sample/himura-kt/build/outputs/lint-results-debug.xml', unHealthy: ''
 	}
 	
 	stage ('Test') {
