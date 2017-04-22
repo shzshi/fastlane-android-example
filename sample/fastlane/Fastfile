@@ -17,9 +17,7 @@ platform :android do
   lane :assemble do
   
   gradle(
-      task: 'assemble',
-      build_type: 'Dev',
-      flavor: 'Staging'
+      task: 'assemble'
     )
 	
   end
