@@ -12,15 +12,25 @@ import groovy.json.JsonOutput
 import java.net.URL
 
 node {
-	stage 'Checkout and Setup'
+	stage ('Checkout and Setup') {
 		checkout scm
 		sh 'cd sample/fastlane/'
-	stage 'Assemble'
+	}
+	
+	stage ('Assemble') {
 		sh 'fastlane android assemble'
-	stage 'Lint'
+	}
+	
+	stage ('Lint') {
 		sh 'fastlane android lint'
-	stage 'Test'
+	}
+	
+	stage ('Test') {
 		sh 'fastlane android test'
-	stage 'Crashlytics'
+	}
+	
+	stage ('Crashlytics') {
 		sh 'fastlane android publish'
+		
+	}
 }
