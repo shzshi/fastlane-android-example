@@ -16,9 +16,9 @@ platform :android do
   desc "Assemble"
   lane :assemble do
   
-  gradle(
-      task: 'assemble'
-    )
+  #Clean project directory
+    gradle(task: "clean")
+	gradle(task: 'assemble')
 	
   end
   
