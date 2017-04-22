@@ -22,7 +22,7 @@ node {
 	}
 	
 	stage ('Lint') {
-		sh 'cd sample/fastlane/; fastlane android lint'
+		sh 'cd sample/fastlane/; fastlane android static_analysis'
 	}
 	
 	stage ('Test') {
