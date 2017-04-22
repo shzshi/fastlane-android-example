@@ -36,8 +36,8 @@ platform :android do
 	  gradle(task: "test")
 
 		#Generate jacoco coverage reports for release and debug
-		jacoco_gradle(build_type: "Release")
-		jacoco_gradle(build_type: "Debug")
+		#jacoco_gradle(build_type: "Release")
+		#jacoco_gradle(build_type: "Debug")
   end
   
   desc "Publish to CRASHLYTICS"
