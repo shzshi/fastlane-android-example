@@ -1,29 +1,52 @@
+# Customise this file, documentation can be found here:
+# https://github.com/fastlane/fastlane/tree/master/fastlane/docs
+# All available actions: https://docs.fastlane.tools/actions
+
+# update_fastlane
 fastlane_version "2.17.1"
 
 default_platform :android
 
 platform :android do
-
-  desc "Alpha release app. Deploy a new version to the Google Play Store - Alpha channel"
-  lane :alpha do |options|
-    gradle(task: "clean")
-    
-    gradle(task: "assemble")
-    
-#    sign_apk(
-#      keystore_path: "${HOME}/keyvault/android.jks",
-#      alias: "android-fastlane-example",
-#      storepass: options[:storepass],
-#      tsa: "http://timestamp.comodoca.com/rfc316",
-#    )
-
-    
-#    zipalign(apk_path: "#{lane_context[SharedValues::SIGNED_APK_PATH]}")
-    gradle(task: "test")
+  before_all do
+    ENV["CRASHLYTICS_API_TOKEN"] = "761dec15218ab1b985ecd5f0070f7204b59a0826"
+    ENV["CRASHLYTICS_BUILD_SECRET"] = "32352c5a20c162184b4601242467a0dda1febc0e33ddf6049a1b758078c21e8e"
+  end
   
-  #supply(
-  #   track: 'alpha',
-  #   apk: "#{lane_context[SharedValues::SIGNED_APK_PATH]}"
-  # )
+  desc "Assemble"
+  lane :assemble do
+  
+  gradle(
+      task: 'assemble',
+      build_type: 'Dev',
+      flavor: 'Staging'
+    )
+	
+  end
+  
+  desc "Static Code Analysis"
+  lane :static_analysis do
+  
+	gradle(task: "lint checkstyle findbugs pmd")
+  
+  end
+  
+  desc "Testing"
+  lane :test do
+
+	  gradle(task: "test")
+
+		#Generate jacoco coverage reports for release and debug
+		jacoco_gradle(build_type: "Release")
+		jacoco_gradle(build_type: "Debug")
+  end
+  
+  desc "Publish to CRASHLYTICS"
+  lane :publish do
+	
+	crashlytics(
+		groups: "qa-team"
+    )
+	
   end
 end
