@@ -14,7 +14,7 @@ import java.net.URL
 node {
 	stage 'Checkout and Setup'
 		checkout scm
-		sh 'cd fastlane'
+		sh 'cd sample/fastlane/'
 	stage 'Assemble'
 		sh 'fastlane assemble'
 	stage 'Lint'
