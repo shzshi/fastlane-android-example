@@ -61,9 +61,9 @@ platform :android do
   desc "Publish to CRASHLYTICS"
   lane :publish do
 	
-	crashlytics(
-		groups: "qa-team"
-    )
+#	crashlytics(
+#		groups: "qa-team"
+#    )
 	
   end
 end
