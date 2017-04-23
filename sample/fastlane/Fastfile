@@ -23,6 +23,15 @@ platform :android do
 	#sign_apk(keystore_path: options[:keystore_path], input_apk_path: options[:input_apk_path],
       alias: options[:alias], storepass: options[:storepass], tsa: options[:tsa], signed_apk_path: options[:signed_apk_path], keypass: options[:keypass])
 	
+	sign_apk(
+      alias: "android-fastlane-example",
+      storepass: options[:storepass],
+      keystore_path: "${HOME}/keyvault/android.jks",
+      tsa: "http://timestamp.comodoca.com/rfc316",
+      signed_apk_path: options[:signed_apk_path],
+      keypass: options[:keypass]
+    )
+	
   end
   
   desc "Static Code Analysis"

@@ -18,7 +18,7 @@ node {
 	}
 	
 	stage ('Stage Assemble') {
-		sh 'cd sample/fastlane/; fastlane android assemble '
+		sh 'cd sample/fastlane/; fastlane android assemble storepass:"abc123!"'
 	}
 	
 	stage ('Stage Static Code Analysis') {
@@ -31,7 +31,7 @@ node {
 	}
 	
 	stage ('Stage Crashlytics') {
-		sh 'cd sample/fastlane/; fastlane android publish'
+#		sh 'cd sample/fastlane/; fastlane android publish'
 		
 	}
 }
