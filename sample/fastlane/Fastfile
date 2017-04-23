@@ -23,15 +23,6 @@ platform :android do
 	#sign_apk(keystore_path: options[:keystore_path], input_apk_path: options[:input_apk_path],
       alias: options[:alias], storepass: options[:storepass], tsa: options[:tsa], signed_apk_path: options[:signed_apk_path], keypass: options[:keypass])
 	
-	sign_apk(
-      alias: "android-fastlane-example",
-      storepass: options[:storepass],
-      keystore_path: "${HOME}/keyvault/android.jks",
-      tsa: "http://timestamp.comodoca.com/rfc316",
-      signed_apk_path: options[:signed_apk_path],
-      keypass: options[:keypass]
-    )
-	
   end
   
   desc "Static Code Analysis"
@@ -51,6 +42,21 @@ platform :android do
 		#jacoco_gradle(build_type: "Release")
 		#jacoco_gradle(build_type: "Debug")
   end
+  
+  desc "Nexus Upload"
+  lane :nexus do 
+		nexus_upload(
+			file: "sample/app/build/outputs/apk/app-debug.apk",
+			repo_id: "artefacts",
+			repo_group_id: "com.fastlane",
+			repo_project_name: "apk",
+			repo_project_version: "1.13",
+			repo_classifier: "dSYM", # Optional
+			endpoint: "http://localhost:8081",
+			username: "admin",
+			password: "admin123"
+		)
+  end 
   
   desc "Publish to CRASHLYTICS"
   lane :publish do
