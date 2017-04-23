@@ -45,7 +45,7 @@ platform :android do
   desc "Nexus Upload"
   lane :nexus do 
 		nexus_upload(
-			file: "sample/app/build/outputs/apk/app-debug.apk",
+			file: "app/build/outputs/apk/app-debug.apk",
 			repo_id: "artefacts",
 			repo_group_id: "com.fastlane",
 			repo_project_name: "apk",
