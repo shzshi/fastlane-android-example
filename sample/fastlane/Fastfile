@@ -20,8 +20,7 @@ platform :android do
     gradle(task: "clean")
 	gradle(task: 'assemble')
 	
-	#sign_apk(keystore_path: options[:keystore_path], input_apk_path: options[:input_apk_path],
-      alias: options[:alias], storepass: options[:storepass], tsa: options[:tsa], signed_apk_path: options[:signed_apk_path], keypass: options[:keypass])
+#	sign_apk(keystore_path: options[:keystore_path], input_apk_path: options[:input_apk_path],alias: options[:alias], storepass: options[:storepass], tsa: options[:tsa], signed_apk_path: options[:signed_apk_path], keypass: options[:keypass])
 	
   end
   
