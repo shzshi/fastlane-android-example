@@ -12,25 +12,25 @@ import groovy.json.JsonOutput
 import java.net.URL
 
 node {
-	stage ('Checkout and Setup') {
+	stage ('Stage Checkout and Setup') {
 		checkout scm
 		sh 'cd sample/fastlane/'
 	}
 	
-	stage ('Assemble') {
-		sh 'cd sample/fastlane/; fastlane android assemble'
+	stage ('Stage Assemble') {
+		sh 'cd sample/fastlane/; fastlane android assemble '
 	}
 	
-	stage ('Lint') {
-		sh 'cd sample/fastlane/; fastlane android static_analysis'
+	stage ('Stage Static Code Analysis') {
+#		sh 'cd sample/fastlane/; fastlane android static_analysis'
 		androidLint canComputeNew: false, defaultEncoding: '', healthy: '', pattern: 'file:///home/ec2-user/.jenkins/workspace/DevOps%20Practise/Android/Android_Example_1.4/sample/himura-kt/build/outputs/lint-results-debug.xml', unHealthy: ''
 	}
 	
-	stage ('Test') {
+	stage ('Stage Testing') {
 		sh 'cd sample/fastlane/; fastlane android test'
 	}
 	
-	stage ('Crashlytics') {
+	stage ('Stage Crashlytics') {
 		sh 'cd sample/fastlane/; fastlane android publish'
 		
 	}
