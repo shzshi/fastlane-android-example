@@ -30,6 +30,10 @@ node {
 		sh 'cd sample/fastlane/; fastlane android test'
 	}
 	
+	stage ('Stage Nexus') {
+		sh 'cd sample/fastlane/; fastlane android nexus'
+	}
+	
 	stage ('Stage Crashlytics') {
 //		sh 'cd sample/fastlane/; fastlane android publish'
 		
