@@ -52,9 +52,9 @@ platform :android do
 			repo_project_name: "apk",
 			repo_project_version: "1.13",
 			repo_classifier: "dSYM", # Optional
-			endpoint: "http://localhost:8081",
-			username: "admin",
-			password: "admin123"
+			endpoint: "http://54.246.240.35:8081/nexus/content/repositories/snapshots/",
+			username: "deployment",
+			password: "n3xu5D3p"
 		)
   end 
   
